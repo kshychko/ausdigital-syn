@@ -25,7 +25,7 @@ Widespread adoption of the e-invoicing framework depends on the provision of cle
 
 As shown in the diagram below, the standard UBL XSD/Schemmatron/Genericode processing model imposes significant complexity burdens on implementers.  An alternative REST/JSON microservices model reduces implementation cost and complexity to a near zero minimum.
 
-![XMLvsJSON](XML2JSON.png)
+![XMLvsJSON](UBL2JSON.png)
 
 e-Invoicing implementers can choose whether to consume third party transformation & validation services or whether to build their own microservices based on this specification.
 
