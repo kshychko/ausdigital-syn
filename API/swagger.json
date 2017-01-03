@@ -40,7 +40,16 @@
             }
           },
           "400" : {
-            "description" : "bad input parameter"
+            "description" : "standard error response",
+            "schema" : {
+              "$ref" : "#/definitions/Errors"
+            }
+          },
+          "401" : {
+            "description" : "Authorisation error - api key refused."
+          },
+          "500" : {
+            "description" : "Oops, something went wrong on our side"
           }
         }
       }
@@ -69,13 +78,29 @@
             }
           },
           "400" : {
-            "description" : "bad input parameter"
+            "description" : "standard error response",
+            "schema" : {
+              "$ref" : "#/definitions/Errors"
+            }
+          },
+          "401" : {
+            "description" : "Authorisation error - api key refused."
+          },
+          "500" : {
+            "description" : "Oops, something went wrong on our side"
           }
         }
       }
     }
   },
   "definitions" : {
+    "Errors" : {
+      "type" : "array",
+      "description" : "collection of standard error strucures",
+      "items" : {
+        "$ref" : "#/definitions/Error"
+      }
+    },
     "Error" : {
       "properties" : {
         "link" : {
@@ -112,6 +137,14 @@
         }
       },
       "description" : "an object containing references to the source of the error, optionally including any of the following"
+    }
+  },
+  "responses" : {
+    "Errors" : {
+      "description" : "standard error response",
+      "schema" : {
+        "$ref" : "#/definitions/Errors"
+      }
     }
   }
 }
