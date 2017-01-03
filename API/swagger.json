@@ -19,7 +19,7 @@
     "/json2ubl" : {
       "post" : {
         "summary" : "converts JSON UBL to UBL 2.1 XML",
-        "description" : "Pass a valid UBL JSON instance document and this API will return a fully conformant UBL 2.1 XML instance.\n",
+        "description" : "Pass a valid UBL JSON instance document and this API will return a fully conformant UBL 2.1 XML instance.",
         "operationId" : "json2ubl",
         "consumes" : [ "application/json" ],
         "produces" : [ "application/xml" ],
