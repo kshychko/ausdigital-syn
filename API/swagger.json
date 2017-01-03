@@ -91,6 +91,41 @@
           }
         }
       }
+    },
+    "/validator" : {
+      "post" : {
+        "summary" : "validates a UBL JSON instance document",
+        "description" : "Pass a UBL JSON instance and this API will return validation results.",
+        "operationId" : "validator",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "ubljson",
+          "description" : "UBL JSON instance",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK, Valid document"
+          },
+          "400" : {
+            "description" : "standard error response",
+            "schema" : {
+              "$ref" : "#/definitions/Errors"
+            }
+          },
+          "401" : {
+            "description" : "Authorisation error - api key refused."
+          },
+          "500" : {
+            "description" : "Oops, something went wrong on our side"
+          }
+        }
+      }
     }
   },
   "definitions" : {
