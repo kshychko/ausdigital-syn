@@ -57,7 +57,7 @@
     "/ubl2json" : {
       "post" : {
         "summary" : "converts UBL 2.1 XML to JSON",
-        "description" : "Pass a valid UBL 2.1 XML instance document and this API will return a semantically equivalent JSON instance document.\n",
+        "description" : "Pass a valid UBL 2.1 XML instance document and this API will return a semantically equivalent JSON instance document.",
         "operationId" : "ubl2json",
         "consumes" : [ "application/xml" ],
         "produces" : [ "application/json" ],
