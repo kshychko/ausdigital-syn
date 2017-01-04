@@ -1,4 +1,4 @@
-# JSON Syntax for UBL elements
+# JSON Syntax for UBL documents
 
 The normative form for UBL documents is XML and the normative definition is the UBL XSD Schema lubrary.  Therefore the JSON syntax implementation for UBL occasionally refers to the XML form when defining the JSON rules.
 
@@ -25,16 +25,122 @@ All UBL types inherit from the UN/CEFACT Core Component Technical Specification 
 
 In mapping UBL to JSON there is a balance to be struck between a simple mapping algorithm (leading to relatively more complext JSON) and a more complex set of mapping rules (that could deliver simpler JSON).  This specification prioritises simple JSON even at the cost of more complex mapping rules when transforming to/from UBL XML.
 
-|CCTS Type | UBL XML Implementation | JSON Implementation|Notes |
-|--------------|------------|--------------------|------|
-|AmountType|```<cbc:Amount currencyID="AUD" currencyCodeListVersionID="1996">10.00</cbc:Amount>```  |```"Amount":10.00``` | JSON representation will not specify currecy for every data element.  Instead it will use the UBL document level currency indicator "documentCurrencyCode":"AUD" |
-|BinaryObjectType  |`<cbc:EmbeddedDocumentBinaryObject format="pdf" characterSetCode="utf-8" mimeCode="application/pdf" encodingCode="base64" uri="https://mydomain.com/invoice1234.pdf" filename="invoice1234.pdf"> UjBsR09EbGhjZ0dTQUxNQU</cbc:EmbeddedDocumentBinaryObject>`| ```"ExternalReference":{"URI":uri="https://mydomain.com/invoice1234.pdf", "DocumentHash":"H5DGjk67g3SDllk"}``` |UBL supports either embedded or referenced binary attachments.  The JSON implementaiton will always use the UBL "ExternalReference" Model |
-|CodeType  |```<cac:Country> <cbc:IdentificationCode listAgencyID="5" listAgencyName="International Organization for Standardization" listName="Country Identification Code" listVersionID="SecondEdition2006VI-12" name="CountryIdentificationCode" languageID="en" listURI="http://docs.oasis-open.org/ubl/os-UBL-2.1/cl/gc/default/CountryIdentificationCode-2.1.gc" listSchemeURI="urn:un:unece:uncefact:identifierlist:standard:5:ISO316612A"> AU </cbc:IdentificationCode> </cac:Country>``` | ```"Country":"AU"``` |The reference codelist scheme for each coded element in a JSON UBL is defined as part of the implementation profile and is referenced through the CustomizationID as described in the [code-list specification](http://code-lists.readthedocs.io/en/latest/).|
-|DateTimeType  | ```<cbc:IssueDate format="iso-8601">2016-07-01</cbc:IssueDate>``` | ```"issueDate":"2016-07-01"``` | JSON representation will always use ISO-8601 standard datetime format. |
-|IdentifierType  |```      <cac:PartyIdentification> <cbc:ID schemeID="urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151" schemeName="ABN" schemeAgencyID="ato.gov.au" schemeAgencyName="Australian Taxation Office" schemeVersionID=" " schemeDataURI="http://abr.business.gov.au/abrxmlsearchRPC/Forms/SearchByABNv201408.aspx" schemeURI="urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"> 51083392303</cbc:ID> </cac:PartyIdentification>```  | ```"PartyIdentification":{"ABN":"51083392303"}``` | JSON Implementation maintains a normative code-list of unique short names (eg "ABN") for each identifier category (eg party) |
-|IndicatorType  |```<cbc:CopyIndicator foprmat="text"> false</cbc:CopyIndicator>```  | ```"CopyIndicator":false``` |  JSON representation will always use the JSON boolean type|
-|MeasureType  |```<cbc:GrossWeightMeasure unitCode="KGM" unitCodeListVersionID="urn:un:unece:uncefact:codelist:specification:66411:8e">130 </cbc:GrossWeightMeasure>```  | ```"GrossWeightMeasure":{"value":130, "UnitCode":"KGM"}``` | JSON representation will be as a value/unit object tuple and, like UBL XML, will always use UN/ECE Rec20 code list |
-|NumericType  |```<cbc:CopiesNumeric format="decimal">1.0 </cbc:CopiesNumeric>```  | ```"CopiesNumeric":1.0``` |JSON representation will always use the JSON Number type  |
-|QuantityType  |```<cbc:InvoicedQuantity unitCode="KG" unitCodeListID="urn:un:unece:uncefact:codelist:specification:66411:8e" unitCodeListAgencyID="UN/ECE" unitCodeListAgencyName="United Nations Economic Commission for Europe">100 </cbc:InvoicedQuantity>```  | ```"InvoicedQuantity":{"Quantity":100, "UnitCode":"KGM"```} |JSON representation will be as a value/unit object tuple and, like UBL XML, will always use UN/ECE Rec20 code list  |
-|TextType  | ```<cbc:Name languageID="EN" languageLocaleID="AU">ACME Pty Ltd</cbc:Name>``` |```"Name":"ACME Pty Ltd"```  | JSON representation will not specify language for every string data element.  Instead it will use the UBL document level language indicator "Language":"EN" using ISO 639-1 language codes|
+### CCTS AmountType
 
+JSON representation SHALL NOT specify currecy for every data element.  Instead it SHALL use the UBL document level currency indicator "documentCurrencyCode":"AUD"
+
+Therefore the UBL XML 
+
+```<cbc:Amount currencyID="AUD" currencyCodeListVersionID="1996">10.00</cbc:Amount>``` 
+
+Maps to the UBL JSON
+
+``` "Amount":10.00 ```
+
+### CCTS BinaryObjectType 
+
+UBL supports either embedded or referenced binary attachments.  The JSON implementaiton SHALL always use the UBL "ExternalReference" Model.  
+
+Therefore the UBL XML
+
+```<cbc:EmbeddedDocumentBinaryObject format="pdf" characterSetCode="utf-8" mimeCode="application/pdf" encodingCode="base64" uri="https://mydomain.com/invoice1234.pdf" filename="invoice1234.pdf"> UjBsR09EbGhjZ0dTQUxNQU</cbc:EmbeddedDocumentBinaryObject> ```
+
+Maps to the UBL JSON
+
+```"ExternalReference":{"URI":uri="https://mydomain.com/invoice1234.pdf", "DocumentHash":"H5DGjk67g3SDllk"}```
+
+### CCTS CodeType
+
+The reference codelist scheme for each coded element in a JSON UBL is defined as part of the implementation profile and is referenced through the CustomizationID as described in the [code-list specification](http://code-lists.readthedocs.io/en/latest/).
+
+Therefore the UBL XML
+
+```<cac:Country> <cbc:IdentificationCode listAgencyID="5" listAgencyName="International Organization for Standardization" listName="Country Identification Code" listVersionID="SecondEdition2006VI-12" name="CountryIdentificationCode" languageID="en" listURI="http://docs.oasis-open.org/ubl/os-UBL-2.1/cl/gc/default/CountryIdentificationCode-2.1.gc" listSchemeURI="urn:un:unece:uncefact:identifierlist:standard:5:ISO316612A"> AU </cbc:IdentificationCode> </cac:Country>```
+
+Maps to the UBL JSON
+
+ ```"Country":"AU" ``` 
+ 
+### CCTS DateTimeType
+ 
+JSON representation SHALL always use ISO-8601 standard datetime format.
+ 
+Therefore the UBL XML
+
+```<cbc:IssueDate format="iso-8601">2016-07-01</cbc:IssueDate>```
+ 
+Maps to the UBL JSON
+
+```"issueDate":"2016-07-01" ```
+
+### CCTS IdentifierType
+
+The JSON code-lists specification SHALL maintain normative code-list of unique short names (eg "ABN") for each identifier category (eg party), thereby allowing a XML code type to map to a simple name-value pair in JSON.
+
+Therefore the UBL XML
+
+```<cac:PartyIdentification> <cbc:ID schemeID="urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151" schemeName="ABN" schemeAgencyID="ato.gov.au" schemeAgencyName="Australian Taxation Office" schemeVersionID=" " schemeDataURI="http://abr.business.gov.au/abrxmlsearchRPC/Forms/SearchByABNv201408.aspx" schemeURI="urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"> 51083392303</cbc:ID> </cac:PartyIdentification>``` 
+ 
+Maps to the UBL JSON
+
+```"PartyIdentification":{"ABN":"51083392303"}``` 
+
+### CCTS IndicatorType 
+
+JSON representation SHALL always use the JSON boolean type
+
+Therefore the UBL XML
+
+```<cbc:CopyIndicator foprmat="text"> false</cbc:CopyIndicator>```
+ 
+Maps to the UBL JSON
+ 
+```"CopyIndicator":false```
+
+### MeasureType 
+
+JSON representation SHALL be as a value/unit object tuple and, like UBL XML, will always use UN/ECE Rec20 code list
+
+Therefore the UBL XML
+
+```<cbc:GrossWeightMeasure unitCode="KGM" unitCodeListVersionID="urn:un:unece:uncefact:codelist:specification:66411:8e">130 </cbc:GrossWeightMeasure>``` 
+ 
+Maps to the UBL JSON
+ 
+```"GrossWeightMeasure":{"value":130, "UnitCode":"KGM"}```
+
+### CCTS NumericType
+
+JSON representation SHALL always use the JSON Number type 
+
+Therefore the UBL XML
+
+```<cbc:CopiesNumeric format="decimal">1.0 </cbc:CopiesNumeric>``` 
+ 
+Maps to the UBL JSON
+ 
+```"CopiesNumeric":1.0```
+
+### CCTS QuantityType
+
+JSON representation SHALL be as a value/unit object tuple and, like UBL XML, will always use UN/ECE Rec20 code list
+
+Therefore the UBL XML
+
+```<cbc:InvoicedQuantity unitCode="KG" unitCodeListID="urn:un:unece:uncefact:codelist:specification:66411:8e" unitCodeListAgencyID="UN/ECE" unitCodeListAgencyName="United Nations Economic Commission for Europe">100 </cbc:InvoicedQuantity>``` 
+ 
+Maps to the UBL JSON
+ 
+ ```"InvoicedQuantity":{"Quantity":100, "UnitCode":"KGM"}```
+ 
+ ### CCTS TextType
+ 
+JSON representation SHALL NOT specify language for every string data element.  Instead it will use the UBL document level language indicator "Language":"EN" using ISO 639-1 language codes
+
+Therefore the UBL XML
+
+```<cbc:Name languageID="EN" languageLocaleID="AU">ACME Pty Ltd</cbc:Name>``` 
+ 
+Maps to the UBL JSON
+ 
+```"Name":"ACME Pty Ltd"```
