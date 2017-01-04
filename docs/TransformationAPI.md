@@ -1,10 +1,16 @@
 # Transformation API
 
-The transformation API specification defiens a standard interface for lossless, schema-aware transformations between standard namespace qualified UBL 2.1 XML and a simple JSON representation.  
+The transformation API specification defiens a standard interface for lossless, schema-aware transformations 
+
+* UBL2JSON : from standard namespace qualified UBL 2.1 XML and a simple JSON representation. 
+* JSON2UBL : from a simple JSON representation to standard namespace qualified UBL 2.1 XML instance.
+
+The JSON instances MUST comply with the [UBL JSON Syntax specification](https://github.com/ausdigital/ubl-json/blob/master/docs/JSONSyntax.md).
+The XML instances MUST comply with the [UBL 2.1 Specification](http://docs.oasis-open.org/ubl/UBL-2.1.html).
 
 ## API Specification
 
-Is maintained at swaggerhub : **[UBL-JSON APIs](https://app.swaggerhub.com/api/ausdigital/ubl-json/1.0.0)
+Is maintained at swaggerhub : **[UBL-JSON APIs](https://app.swaggerhub.com/api/ausdigital/ubl-json/1.0.0)**
 
 ## UBL2JSON Error Response Codes
 
