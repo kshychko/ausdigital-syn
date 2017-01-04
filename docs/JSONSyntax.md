@@ -83,7 +83,7 @@ Therefore the UBL XML
  
 Maps to the UBL JSON
 
-```"PartyIdentification":{"ABN":"51083392303"}``` 
+```"PartyIdentification":{"ABN":"51083392303"} ``` 
 
 ### CCTS IndicatorType 
 
@@ -95,7 +95,7 @@ Therefore the UBL XML
  
 Maps to the UBL JSON
  
-```"CopyIndicator":false```
+```"CopyIndicator":false ```
 
 ### MeasureType 
 
@@ -107,7 +107,7 @@ Therefore the UBL XML
  
 Maps to the UBL JSON
  
-```"GrossWeightMeasure":{"value":130, "UnitCode":"KGM"}```
+```"GrossWeightMeasure":{"value":130, "UnitCode":"KGM"} ```
 
 ### CCTS NumericType
 
@@ -119,7 +119,7 @@ Therefore the UBL XML
  
 Maps to the UBL JSON
  
-```"CopiesNumeric":1.0```
+```"CopiesNumeric":1.0 ```
 
 ### CCTS QuantityType
 
@@ -131,7 +131,7 @@ Therefore the UBL XML
  
 Maps to the UBL JSON
  
- ```"InvoicedQuantity":{"Quantity":100, "UnitCode":"KGM"}```
+ ```"InvoicedQuantity":{"Quantity":100, "UnitCode":"KGM"} ```
  
  ### CCTS TextType
  
@@ -143,4 +143,4 @@ Therefore the UBL XML
  
 Maps to the UBL JSON
  
-```"Name":"ACME Pty Ltd"```
+```"Name":"ACME Pty Ltd" ```
