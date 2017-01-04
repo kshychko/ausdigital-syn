@@ -133,7 +133,7 @@ Maps to the UBL JSON
  
  ```"InvoicedQuantity":{"Quantity":100, "UnitCode":"KGM"} ```
  
- ### CCTS TextType
+### CCTS TextType
  
 JSON representation SHALL NOT specify language for every string data element.  Instead it will use the UBL document level language indicator "Language":"EN" using ISO 639-1 language codes
 
