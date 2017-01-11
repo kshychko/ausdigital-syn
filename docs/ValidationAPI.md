@@ -28,9 +28,9 @@ The API is very simple - it is the error codes and messages that are the heart o
 
 |Error Code | Error Message|
 |-----------|--------------|
-|jsonval-01 | The $schema reference is missing and so this document cannot be validated  |
-|jsonval-02 |   |
-|jsonval-03 |   |
+|struct-01 | The $schema reference is missing and so this document cannot be validated  |
+|struct-02 |   |
+|struct-03 |   |
 
 ## Code-List Error Response Codes
 
