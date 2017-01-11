@@ -8,6 +8,15 @@ The validation API specification defiens a standard interface for the validation
 
 The JSON instances MUST comply with the [UBL JSON Syntax specification](https://github.com/ausdigital/ubl-json/blob/master/docs/JSONSyntax.md).
 
+## Validation Context
+
+As defined by the [UBL Customisation Guide](http://docs.oasis-open.org/ubl/guidelines/UBL2-Customization1.0cs01.pdf) and as implemented by the DBC, UBL allows for the notions of "CustomizationID" and "ProfileID" that are used to define addiotnal restrictions or rules that apply in a specific geographic or industry or porcess context.   In general, the "CustomizationID" represents a broad context whilst "ProfileID" reflects further restritions within that broad context.   The Ausdigital.org suite of semantic specifications uses these two identifiers as follows:
+
+* There is one "CustomizationID" value that indicates the Australian Digitial Business Council restrictions on the global UBL documents. The set of DBC restrictions is evident when comparing the DBC [CoreInvoice Schema](https://github.com/ausdigital/adbc/blob/master/DBC-AU/xsdrt/maindoc/CoreInvoice-1.0.xsd) with the equivalent global UBL 2.1 [Invoice Schema](http://docs.oasis-open.org/ubl/os-UBL-2.1/xsdrt/maindoc/UBL-Invoice-2.1.xsd).  
+* There are a number of "ProfileID" values that represent the rules that apply when the core invoice is used in specific business processes such as RCTI, TaXReceipt, CreditNote, etc.  
+
+All validation rules are tagged with the relevant customizationID(s) and profileID(s) that apply.  Each instance document also contains both these identifiers.   Therefore the validation model is to examine the instance document to determine which validation rules should be applied.
+
 ## API Validator Specification
 
 Is maintained at swaggerhub : **[UBL-JSON APIs](https://app.swaggerhub.com/api/ausdigital/ubl-json/1.0.0)**
