@@ -31,11 +31,11 @@ JSON representation SHALL NOT specify currecy for every data element.  Instead i
 
 Therefore the UBL XML 
 
-```<cbc:Amount currencyID="AUD" currencyCodeListVersionID="1996">10.00</cbc:Amount>``` 
+```<cbc:LineExtensionAmount currencyID="AUD">500.00</cbc:LineExtensionAmount>``` 
 
 Maps to the UBL JSON
 
-``` "Amount":10.00 ```
+``` "lineExtensionAmount":10.00 ```
 
 ### CCTS BinaryObjectType 
 
@@ -43,11 +43,17 @@ UBL supports either embedded or referenced binary attachments.  The JSON impleme
 
 Therefore the UBL XML
 
-```<cbc:EmbeddedDocumentBinaryObject format="pdf" characterSetCode="utf-8" mimeCode="application/pdf" encodingCode="base64" uri="https://mydomain.com/invoice1234.pdf" filename="invoice1234.pdf"> UjBsR09EbGhjZ0dTQUxNQU</cbc:EmbeddedDocumentBinaryObject> ```
+```<cbc:EmbeddedDocumentBinaryObject format="pdf" characterSetCode="utf-8" mimeCode="application/pdf" encodingCode="base64" uri="https://mydomain.com/invoice1234.pdf" filename="invoice1234.pdf">UjBsR09EbGhjZ0dTQUxNQU</cbc:EmbeddedDocumentBinaryObject> ```
+
+```"externalReference":{"uri":"https://mydomain.com/invoice1234.pdf"}```
+or
+
+```<cac:ExternalReference><cbc:URI>https://mydomain.com/invoice1234.pdf</cbc:URI> <cbc:DocumentHash>H5DGjk67g3SDllk</cbc:DocumentHash><cbc:HashAlgorithmMethod>SHA-1</cbc:HashAlgorithmMethod></cac:ExternalReference> ```
+
 
 Maps to the UBL JSON
 
-```"ExternalReference":{"URI":uri="https://mydomain.com/invoice1234.pdf", "DocumentHash":"H5DGjk67g3SDllk"}```
+```"externalReference":{"uri":"https://mydomain.com/invoice1234.pdf", "documentHash":"H5DGjk67g3SDllk", "hashAlgorithmMethod":"SHA-1"}```
 
 ### CCTS CodeType
 
@@ -55,11 +61,11 @@ The reference codelist scheme for each coded element in a JSON UBL is defined as
 
 Therefore the UBL XML
 
-```<cac:Country> <cbc:IdentificationCode listAgencyID="5" listAgencyName="International Organization for Standardization" listName="Country Identification Code" listVersionID="SecondEdition2006VI-12" name="CountryIdentificationCode" languageID="en" listURI="http://docs.oasis-open.org/ubl/os-UBL-2.1/cl/gc/default/CountryIdentificationCode-2.1.gc" listSchemeURI="urn:un:unece:uncefact:identifierlist:standard:5:ISO316612A"> AU </cbc:IdentificationCode> </cac:Country>```
+```<cac:Country> <cbc:IdentificationCode listAgencyID="5" listAgencyName="International Organization for Standardization" listName="Country Identification Code" listVersionID="SecondEdition2006VI-12" name="CountryIdentificationCode" languageID="en" listURI="http://docs.oasis-open.org/ubl/os-UBL-2.1/cl/gc/default/CountryIdentificationCode-2.1.gc" listSchemeURI="urn:un:unece:uncefact:identifierlist:standard:5:ISO316612A">AU</cbc:IdentificationCode> </cac:Country>```
 
 Maps to the UBL JSON
 
- ```"Country":"AU" ``` 
+ ```"country":"AU" ``` 
  
 ### CCTS DateTimeType
  
@@ -83,7 +89,7 @@ Therefore the UBL XML
  
 Maps to the UBL JSON
 
-```"PartyIdentification":{"ABN":"51083392303"} ``` 
+```"partyIdentification":[{"ABN":"51083392303"}] ``` 
 
 ### CCTS IndicatorType 
 
@@ -91,11 +97,11 @@ JSON representation SHALL always use the JSON boolean type
 
 Therefore the UBL XML
 
-```<cbc:CopyIndicator foprmat="text"> false</cbc:CopyIndicator>```
+```<cbc:ChargeIndicator>false</cbc:ChargeIndicator>```
  
 Maps to the UBL JSON
  
-```"CopyIndicator":false ```
+```"chargeIndicator":false ```
 
 ### MeasureType 
 
@@ -107,7 +113,7 @@ Therefore the UBL XML
  
 Maps to the UBL JSON
  
-```"GrossWeightMeasure":{"value":130, "UnitCode":"KGM"} ```
+```"grossWeightMeasure":{"value":130, "unitCode":"KGM"} ```
 
 ### CCTS NumericType
 
@@ -115,11 +121,11 @@ JSON representation SHALL always use the JSON Number type
 
 Therefore the UBL XML
 
-```<cbc:CopiesNumeric format="decimal">1.0 </cbc:CopiesNumeric>``` 
+```<cbc:Percent format="decimal">5.0 </cbc:Percent>``` 
  
 Maps to the UBL JSON
  
-```"CopiesNumeric":1.0 ```
+```"percent"51.0 ```
 
 ### CCTS QuantityType
 
@@ -131,7 +137,7 @@ Therefore the UBL XML
  
 Maps to the UBL JSON
  
- ```"InvoicedQuantity":{"Quantity":100, "UnitCode":"KGM"} ```
+ ```"invoicedQuantity":{"value":100, "unitCode":"KG"} ```
  
 ### CCTS TextType
  
@@ -143,4 +149,4 @@ Therefore the UBL XML
  
 Maps to the UBL JSON
  
-```"Name":"ACME Pty Ltd" ```
+```"name":"ACME Pty Ltd" ```
