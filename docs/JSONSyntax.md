@@ -101,7 +101,7 @@ JSON representation SHALL always use the JSON boolean type
 
 Therefore the UBL XML
 
-```<cbc:ChargeIndicator>false</cbc:ChargeIndicator>```
+```<cbc:ChargeIndicator>false</cbc:ChargeIndicator> ```
  
 Maps to the UBL JSON
  
