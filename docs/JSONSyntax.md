@@ -45,11 +45,15 @@ Therefore the UBL XML
 
 ```<cbc:EmbeddedDocumentBinaryObject format="pdf" characterSetCode="utf-8" mimeCode="application/pdf" encodingCode="base64" uri="https://mydomain.com/invoice1234.pdf" filename="invoice1234.pdf">UjBsR09EbGhjZ0dTQUxNQU</cbc:EmbeddedDocumentBinaryObject> ```
 
-```"externalReference":{"uri":"https://mydomain.com/invoice1234.pdf"}```
-or
+
+Maps to the UBL JSON
+
+
+```"externalReference":{"uri":"https://mydomain.com/invoice1234.pdf"} ```
+
+Or
 
 ```<cac:ExternalReference><cbc:URI>https://mydomain.com/invoice1234.pdf</cbc:URI> <cbc:DocumentHash>H5DGjk67g3SDllk</cbc:DocumentHash><cbc:HashAlgorithmMethod>SHA-1</cbc:HashAlgorithmMethod></cac:ExternalReference> ```
-
 
 Maps to the UBL JSON
 
