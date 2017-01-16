@@ -13,7 +13,7 @@
     }
   },
   "host" : "virtserver.swaggerhub.com",
-  "basePath" : "/ausdigital/ubl-json/1.0.0",
+  "basePath" : "/ausdigital/ausdigital-json/1.0.0",
   "schemes" : [ "https" ],
   "paths" : {
     "/json2ubl" : {

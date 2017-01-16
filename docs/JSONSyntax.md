@@ -8,14 +8,14 @@ The normative form for UBL documents is XML and the normative definition is the 
 * The JSON schema MUST be a standalone single root schema that does not import external fragments but MAY make use of local schema references ($ref) for re-use of common structures.  It is recognised that several different document schema will define the same common structures but this SHOULD be managed at the semantic model level and not at the runtime schema level.
 * JSON type definitions MUST use exactly the same name as the corresponding UBL XML element name but without any namespace prefix (ie use the UNQUALIFIED UBL element name).
 * JSON schema type definitions MUST include a "description" property and it's value SHOULD equal the corresponding UBL schema <ccts:Definition> property.
-* JSON schema type definitions SHOULD NOT use "enum" types for validation of code list values.  This is to allow codes lists to be managed and versioned searpately from their use in business document schema.  Please refer to the [code lists](https://github.com/ausdigital/code-lists) specification for the treatment of code lists.
+* JSON schema type definitions SHOULD NOT use "enum" types for validation of code list values.  This is to allow codes lists to be managed and versioned searpately from their use in business document schema.  Please refer to the [code lists](https://github.com/ausdigital/ausdigital-code) specification for the treatment of code lists.
 
 ## JSON Instance Rules
 
-* The JSON instance MUST have an "$schema" element that contains the URI of the normative JSON Schema of the form https://ausdigital.org/{domain}-semantics/spec/vx.y.z/document.json - for example https://github.com/ausdigital/billing-semantics/spec/v1.0.0/Invoice.json
+* The JSON instance MUST have an "$schema" element that contains the URI of the normative JSON Schema of the form https://ausdigital.org/{domain}-semantics/spec/vx.y.z/document.json - for example https://github.com/ausdigital/ausdigital-bill/spec/v1.0.0/Invoice.json
 * The JSON instance MUST conform to the JSON schema referenced by the $schema element.
 * The JSON instance SHOULD have a "customizationID" element that contains the URI of the relevant implemenation context because that will define the relevant code-list values (eg BPay as a payment means in Australia) and business rules (eg that tax invoices over $1000 must contain the buyers ABN) that would be validated.
-* If "customizationID" is present then the JSON instance MUST comply with the code-list and business rules defined for that context.  Note that the code-list rules are defined in the [code-lists specification](http://code-lists.readthedocs.io/en/latest/) and the business rules are defined together with each semantic specification (eg [billing semantics](http://billing-semantics.readthedocs.io/en/latest/))
+* If "customizationID" is present then the JSON instance MUST comply with the code-list and business rules defined for that context.  Note that the code-list rules are defined in the [code-lists specification](http://ausdigital-code.readthedocs.io/en/latest/) and the business rules are defined together with each semantic specification (eg [billing semantics](http://ausdigital-bill.readthedocs.io/en/latest/))
 
 ## CCTS Property Mapping
 
@@ -61,7 +61,7 @@ Maps to the UBL JSON
 
 ### CCTS CodeType
 
-The reference codelist scheme for each coded element in a JSON UBL is defined as part of the implementation profile and is referenced through the CustomizationID as described in the [code-list specification](http://code-lists.readthedocs.io/en/latest/).
+The reference codelist scheme for each coded element in a JSON UBL is defined as part of the implementation profile and is referenced through the CustomizationID as described in the [code-list specification](http://ausdigital-code.readthedocs.io/en/latest/).
 
 Therefore the UBL XML
 
