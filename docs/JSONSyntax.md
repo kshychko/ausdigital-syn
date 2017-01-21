@@ -12,8 +12,8 @@ The normative form for UBL documents is XML and the normative definition is the 
 
 ## JSON Instance Rules
 
-* The JSON instance MUST have an "$schema" element that contains the URI of the normative JSON Schema of the form https://ausdigital.org/{domain}-semantics/spec/vx.y.z/document.json - for example https://github.com/ausdigital/ausdigital-bill/spec/v1.0.0/Invoice.json
-* The JSON instance MUST conform to the JSON schema referenced by the $schema element.
+* The JSON instance MUST conform to the corresponding JSON schema which is recommended to be attached to the instance by using a Link header in http request according to http://json-schema.org/latest/json-schema-core.html#rfc.section.9.1. For example:
+`Link: <https://raw.githubusercontent.com/ausdigital/ausdigital-bill/master/spec/v1.0.0/Invoice.json>; rel="describedby"`
 * The JSON instance SHOULD have a "customizationID" element that contains the URI of the relevant implemenation context because that will define the relevant code-list values (eg BPay as a payment means in Australia) and business rules (eg that tax invoices over $1000 must contain the buyers ABN) that would be validated.
 * If "customizationID" is present then the JSON instance MUST comply with the code-list and business rules defined for that context.  Note that the code-list rules are defined in the [code-lists specification](http://ausdigital-code.readthedocs.io/en/latest/) and the business rules are defined together with each semantic specification (eg [billing semantics](http://ausdigital-bill.readthedocs.io/en/latest/))
 
