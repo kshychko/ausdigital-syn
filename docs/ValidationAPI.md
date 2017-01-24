@@ -38,7 +38,7 @@ Are maintained together with the [code-lists specification](http://ausdigital-co
 
 ## Business Rules Error Response Codes
 
-Are maintianed together with the relevant semantic specification - for example [billing seamntics](http://ausdigital-bill.readthedocs.io/en/latest/)
+Are maintianed together with the relevant semantic specification - for example [billing semantics](http://ausdigital-bill.readthedocs.io/en/latest/)
 
 
 
