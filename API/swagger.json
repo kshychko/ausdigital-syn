@@ -12,53 +12,13 @@
       "url" : "https://www.gnu.org/licenses/gpl-3.0.en.html"
     }
   },
-  "host" : "virtserver.swaggerhub.com",
-  "basePath" : "/ausdigital/ausdigital-ubl-json/1.0.0",
   "schemes" : [ "https" ],
   "paths" : {
-    "/json2ubl" : {
-      "post" : {
-        "summary" : "converts JSON UBL to UBL 2.1 XML",
-        "description" : "Pass a valid UBL JSON instance document and this API will return a fully conformant UBL 2.1 XML instance.",
-        "operationId" : "json2ubl",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/xml" ],
-        "parameters" : [ {
-          "in" : "body",
-          "name" : "ubljson",
-          "description" : "valid UBL JSON instance",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "UBL 2.1 XML document",
-            "schema" : {
-              "type" : "string"
-            }
-          },
-          "400" : {
-            "description" : "standard error response",
-            "schema" : {
-              "$ref" : "#/definitions/Errors"
-            }
-          },
-          "401" : {
-            "description" : "Authorisation error - api key refused."
-          },
-          "500" : {
-            "description" : "Oops, something went wrong on our side"
-          }
-        }
-      }
-    },
     "/ubl2json" : {
       "post" : {
         "summary" : "converts UBL 2.1 XML to JSON",
-        "description" : "Pass a valid UBL 2.1 XML instance document and this API will return a semantically equivalent JSON instance document.",
         "operationId" : "ubl2json",
+        "description" : "Pass a valid UBL 2.1 XML instance document and this API will return a semantically equivalent JSON instance document.",
         "consumes" : [ "application/xml" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -78,10 +38,7 @@
             }
           },
           "400" : {
-            "description" : "standard error response",
-            "schema" : {
-              "$ref" : "#/definitions/Errors"
-            }
+            "$ref" : "#/responses/Errors"
           },
           "401" : {
             "description" : "Authorisation error - api key refused."
@@ -95,8 +52,8 @@
     "/validator" : {
       "post" : {
         "summary" : "validates a UBL JSON instance document",
-        "description" : "Pass a UBL JSON instance and this API will return validation results.",
         "operationId" : "validator",
+        "description" : "Pass a UBL JSON instance and this API will return validation results.",
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -113,10 +70,7 @@
             "description" : "OK, Valid document"
           },
           "400" : {
-            "description" : "standard error response",
-            "schema" : {
-              "$ref" : "#/definitions/Errors"
-            }
+            "$ref" : "#/responses/Errors"
           },
           "401" : {
             "description" : "Authorisation error - api key refused."
@@ -130,13 +84,14 @@
   },
   "definitions" : {
     "Errors" : {
-      "type" : "array",
       "description" : "collection of standard error strucures",
+      "type" : "array",
       "items" : {
         "$ref" : "#/definitions/Error"
       }
     },
     "Error" : {
+      "description" : "standard error response srtucture as per jsonapi.org/format/#errors",
       "properties" : {
         "link" : {
           "type" : "string",
@@ -155,23 +110,19 @@
           "description" : "a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."
         },
         "source" : {
-          "$ref" : "#/definitions/Error_source"
+          "description" : "an object containing references to the source of the error, optionally including any of the following",
+          "properties" : {
+            "pointer" : {
+              "type" : "string",
+              "description" : "a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."
+            },
+            "parameter" : {
+              "type" : "string",
+              "description" : "a string indicating which URI query parameter caused the error."
+            }
+          }
         }
-      },
-      "description" : "standard error response srtucture as per jsonapi.org/format/#errors"
-    },
-    "Error_source" : {
-      "properties" : {
-        "pointer" : {
-          "type" : "string",
-          "description" : "a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."
-        },
-        "parameter" : {
-          "type" : "string",
-          "description" : "a string indicating which URI query parameter caused the error."
-        }
-      },
-      "description" : "an object containing references to the source of the error, optionally including any of the following"
+      }
     }
   },
   "responses" : {
@@ -181,5 +132,7 @@
         "$ref" : "#/definitions/Errors"
       }
     }
-  }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/ausdigital/ausdigital-ubl-json/1.0.0"
 }
