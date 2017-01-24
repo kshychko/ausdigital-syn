@@ -18,7 +18,7 @@ The intent is to provide developers with a much simpler implementation model tha
 This Specification
 
  * can be applied equally to any UBL document (this invoice is just the first) and so is maintained as a separate specification.
- * exists to support the Digital Business Council [e-Invoicing initiative](https://ausdigital.github.io), and is under active development at [https://github.com/ausdigital/ausdigital-json](https://github.com/ausdigital/ausdigital-json).
+ * exists to support the Digital Business Council [e-Invoicing initiative](https://ausdigital.github.io), and is under active development at [https://github.com/ausdigital/ausdigital-ubl-json](https://github.com/ausdigital/ausdigital-ubl-json).
 
 
 ## Introduction

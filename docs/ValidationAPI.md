@@ -6,7 +6,7 @@ The validation API specification defines a standard interface for the validation
 * Codes : that the code values used in the JSON instance are defined in a relevant code-list, which may be either a core code-list or a context specific code list.
 * Rules : that the JSON instance complies with the specific business rules for the implementation context identified by the "ProfileID" element in the JSON instance.
 
-The JSON instances MUST comply with the [UBL JSON Syntax specification](https://github.com/ausdigital/ausdigital-json/blob/master/docs/JSONSyntax.md).
+The JSON instances MUST comply with the [UBL JSON Syntax specification](https://github.com/ausdigital/ausdigital-ubl-json/blob/master/docs/JSONSyntax.md).
 
 ## Validation Context
 
@@ -19,7 +19,7 @@ All validation rules are tagged with the relevant customizationID(s) and profile
 
 ## API Validator Specification
 
-Is maintained at swaggerhub : **[UBL-JSON APIs](https://app.swaggerhub.com/api/ausdigital/ausdigital-json/1.0.0)**
+Is maintained at swaggerhub : **[UBL-JSON APIs](https://app.swaggerhub.com/api/ausdigital/ausdigital-ubl-json/1.0.0)**
 
 The API is very simple - it accepts an instance document and returns a list of zero or more error responses. All error responses will comply with the ausdigital standard [RESTful Errors structure](https://app.swaggerhub.com/domains/ausdigital/ErrorModel/1.0).  
 
