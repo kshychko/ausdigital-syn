@@ -10,7 +10,7 @@ The XML instances MUST comply with the [UBL 2.1 Specification](http://docs.oasis
 
 ## API Specification
 
-Is maintained at swaggerhub : **[UBL-JSON APIs](https://app.swaggerhub.com/api/ausdigital/ausdigital-ubl-json/1.0.0)**
+Is maintained at swaggerhub : **[UBL-JSON APIs](https://app.swaggerhub.com/api/ausdigital/ausdigital-ubl-json/1.0)**
 
 ## UBL2JSON Error Response Codes
 
