@@ -2,7 +2,7 @@
 
 # JSON Syntax
 
-## DBC JSON Syntax Specification
+## DBC UBL Syntax 2.0 Specification
 
  * ![raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)
  * Editor: Steve Capell

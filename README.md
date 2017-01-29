@@ -1,4 +1,4 @@
-# UBL JSON Representation
+# UBL Syntax 2.0 Specification JSON Representation
 
 * [Overview](docs/index.md)
 * [UBL JSON Syntax](docs/JSONSyntax.md)

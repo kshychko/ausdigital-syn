@@ -61,7 +61,7 @@ Maps to the UBL JSON
 
 ### CCTS CodeType
 
-The reference codelist scheme for each coded element in a JSON UBL is defined as part of the implementation profile and is referenced through the CustomizationID as described in the [code-list specification](http://ausdigital-code.readthedocs.io/en/latest/).
+The reference codelist scheme for each coded element in a UBL JSON is defined as part of the implementation profile and is referenced through the CustomizationID as described in the [code-list specification](http://ausdigital-code.readthedocs.io/en/latest/).
 
 Therefore the UBL XML
 

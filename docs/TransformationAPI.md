@@ -2,15 +2,15 @@
 
 The transformation API specification defiens a standard interface for lossless, schema-aware transformations 
 
-* UBL2JSON : from standard namespace qualified UBL 2.1 XML and a simple JSON representation. 
+* UBL2JSON : from standard namespace qualified UBL 2.1 XML to a simple JSON representation. 
 * JSON2UBL : from a simple JSON representation to standard namespace qualified UBL 2.1 XML instance.
 
-The JSON instances MUST comply with the [UBL JSON Syntax specification](https://github.com/ausdigital/ausdigital-syn/blob/master/docs/JSONSyntax.md).
-The XML instances MUST comply with the [UBL 2.1 Specification](http://docs.oasis-open.org/ubl/UBL-2.1.html).
+The JSON instances MUST comply with the [UBL Syntax 2.0 Specification](https://github.com/ausdigital/ausdigital-syn/blob/master/docs/JSONSyntax.md).
+The XML instances MUST comply with the [UBL Syntax 1.0 Specification](https://github.com/ausdigital/ausdigital-syn-v1/blob/master/docs/XMLSyntax.md).
 
 ## API Specification
 
-Is maintained at swaggerhub : **[UBL-JSON APIs](https://app.swaggerhub.com/api/ausdigital/ausdigital-syn/1.0)**
+Is maintained at swaggerhub : **[UBL Syntax 2.0 Transformation and Validation API](https://app.swaggerhub.com/api/ausdigital/ausdigital-syn/1.0)**
 
 ## UBL2JSON Error Response Codes
 
@@ -32,7 +32,7 @@ All error responses will comply with the ausdigital standard [RESTful Errors str
 |json2ubl-02 |Standard code-list scheme not found for {JSON path}   |
 |json2ubl-02 |   |
 
-## Sample UBL 2.1 XML
+## Sample UBL 2.1 XML compliant with UBL Syntax 1.0 Specification
 
 ```
 <n2:Invoice 
@@ -207,7 +207,7 @@ All error responses will comply with the ausdigital standard [RESTful Errors str
 </n2:Invoice>
 ```
 
-## Sample UBL JSON
+## Sample UBL JSON file compliant with UBL Syntax 2.0 Specification
 
 ```
 {
