@@ -1,9 +1,9 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "This API supports UBL-JSON trasnformations and Validations of JSON UBL documents",
-    "version" : "1.0.0",
-    "title" : "UBL-JSON Transformation and Validation",
+    "description" : "This API supports UBL XML to JSON trasnformations and validations of UBL JSON documents",
+    "version" : "1.0",
+    "title" : "UBL Syntax 2.0 Transformation and Validation API",
     "contact" : {
       "email" : "info@ausdigital.org"
     },
@@ -12,7 +12,9 @@
       "url" : "https://www.gnu.org/licenses/gpl-3.0.en.html"
     }
   },
-  "schemes" : [ "https" ],
+  "host" : "syn.testpoint.io",
+  "schemes" : [ "https", "http" ],
+  "basePath" : "/api/v0",
   "paths" : {
     "/ubl2json" : {
       "post" : {
@@ -33,6 +35,41 @@
         "responses" : {
           "200" : {
             "description" : "UBL document in JSON representation",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "400" : {
+            "$ref" : "#/responses/Errors"
+          },
+          "401" : {
+            "description" : "Authorisation error - api key refused."
+          },
+          "500" : {
+            "description" : "Oops, something went wrong on our side"
+          }
+        }
+      }
+    },
+    "/json2ubl" : {
+      "post" : {
+        "summary" : "converts JSON UBL to UBL 2.1 XML",
+        "operationId" : "json2ubl",
+        "description" : "Pass a valid UBL JSON instance document and this API will return a fully conformant UBL 2.1 XML instance.",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "ubljson",
+          "description" : "valid UBL JSON instance",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "UBL 2.1 XML document",
             "schema" : {
               "type" : "string"
             }
@@ -132,7 +169,5 @@
         "$ref" : "#/definitions/Errors"
       }
     }
-  },
-  "host" : "virtserver.swaggerhub.com",
-  "basePath" : "/ausdigital/ausdigital-syn/1.0.0"
+  }
 }
