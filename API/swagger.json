@@ -3,7 +3,7 @@
   "info" : {
     "description" : "This API supports UBL XML to UBL JSON trasnformations and Validations of UBL JSON documents",
     "version" : "1.0",
-    "title" : "UBL Syntax 2.0 Specification Transformation and Validation",
+    "title" : "UBL Syntax 2.0 Transformation and Validation",
     "contact" : {
       "email" : "info@ausdigital.org"
     },
