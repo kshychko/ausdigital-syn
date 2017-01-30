@@ -40,7 +40,7 @@
             }
           },
           "400" : {
-            "$ref" : "#/responses/Errors"
+            "$ref" : "#/responses/errors"
           },
           "401" : {
             "description" : "Authorisation error - api key refused."
@@ -75,7 +75,7 @@
             }
           },
           "400" : {
-            "$ref" : "#/responses/Errors"
+            "$ref" : "#/responses/errors"
           },
           "401" : {
             "description" : "Authorisation error - api key refused."
@@ -107,7 +107,7 @@
             "description" : "OK, Valid document"
           },
           "400" : {
-            "$ref" : "#/responses/Errors"
+            "$ref" : "#/responses/errors"
           },
           "401" : {
             "description" : "Authorisation error - api key refused."
@@ -120,14 +120,7 @@
     }
   },
   "definitions" : {
-    "Errors" : {
-      "description" : "collection of standard error strucures",
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/definitions/Error"
-      }
-    },
-    "Error" : {
+    "error" : {
       "description" : "standard error response srtucture as per jsonapi.org/format/#errors",
       "properties" : {
         "link" : {
@@ -163,10 +156,18 @@
     }
   },
   "responses" : {
-    "Errors" : {
-      "description" : "standard error response",
+    "errors" : {
+      "description" : "Ausdigital standard JSON error response structure as per jsonapi.org/format/#errors",
       "schema" : {
-        "$ref" : "#/definitions/Errors"
+        "type" : "object",
+        "properties" : {
+          "errors" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/definitions/error"
+            }
+          }
+        }
       }
     }
   }
