@@ -40,13 +40,13 @@
             }
           },
           "400" : {
-            "$ref" : "#/responses/errors"
+            "$ref" : "#/responses/error400"
           },
           "401" : {
-            "description" : "Authorisation error - api key refused."
+            "$ref" : "#/responses/error401"
           },
           "500" : {
-            "description" : "Oops, something went wrong on our side"
+            "$ref" : "#/responses/error500"
           }
         }
       }
@@ -75,13 +75,13 @@
             }
           },
           "400" : {
-            "$ref" : "#/responses/errors"
+            "$ref" : "#/responses/error400"
           },
           "401" : {
-            "description" : "Authorisation error - api key refused."
+            "$ref" : "#/responses/error401"
           },
           "500" : {
-            "description" : "Oops, something went wrong on our side"
+            "$ref" : "#/responses/error500"
           }
         }
       }
@@ -107,13 +107,13 @@
             "description" : "OK, Valid document"
           },
           "400" : {
-            "$ref" : "#/responses/errors"
+            "$ref" : "#/responses/error400"
           },
           "401" : {
-            "description" : "Authorisation error - api key refused."
+            "$ref" : "#/responses/error401"
           },
           "500" : {
-            "description" : "Oops, something went wrong on our side"
+            "$ref" : "#/responses/error500"
           }
         }
       }
@@ -156,8 +156,36 @@
     }
   },
   "responses" : {
-    "errors" : {
-      "description" : "Ausdigital standard JSON error response structure as per jsonapi.org/format/#errors",
+    "error400" : {
+      "description" : "Standard error response",
+      "schema" : {
+        "type" : "object",
+        "properties" : {
+          "errors" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "error401" : {
+      "description" : "Authorisation error - api key refused.",
+      "schema" : {
+        "type" : "object",
+        "properties" : {
+          "errors" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "error500" : {
+      "description" : "Oops, something went wrong on our side.",
       "schema" : {
         "type" : "object",
         "properties" : {
