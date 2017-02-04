@@ -1,6 +1,6 @@
 **[Back to AusDigital.org](http://ausdigital.org/)**
 
-# JSON Syntax -- Trigger webhook
+# JSON Syntax
 
 ## DBC UBL Syntax 2.0 Specification
 
